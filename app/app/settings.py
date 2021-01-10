@@ -108,10 +108,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-    {'NAME': 'core.validators.MaximumLengthValidator', },
     {'NAME': 'core.validators.NumberValidator', },
     {'NAME': 'core.validators.CharacterValidator', },
     {'NAME': 'core.validators.SymbolValidator', },
+    {'NAME': 'core.validators.MaximumLengthValidator', },
 ]
 
 
@@ -135,3 +135,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'core.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 5 * 60
